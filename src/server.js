@@ -18,5 +18,5 @@ app.use(express.static(__dirname+'/public'));
 
 //Arrancando servidor
 server.listen(app.get('port'), () =>{
-    console.log('SERVER RUNNING');
+    console.log(`Server Running in port ${app.get('port')}`);
 })
