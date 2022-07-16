@@ -1,0 +1,233 @@
+:root {
+    --canvas-color: #ecddba;
+    --acent-color: #3d7085;
+    --bg-color: #0f2c2e;
+    --bg-input-color: #e1c584;
+    --font-color: #0f2c2e;
+    --font-color-white: #ecddba;
+    --shadow-input: 0px 4px 0px hsl(42, 50%, 50%);
+    --shadow-button: 0px 4px 0px hsl(198, 37%, 20%);
+    --shadow-button-active: 0px 2px 0px hsl(198, 37%, 20%);
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    /* font-size: 18px;
+    color: var(--font-color); */
+}
+body,
+html {
+    height: 100vh;
+    width: 100vw;
+    overscroll-behavior: none;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+.clear {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    opacity: 0.8;
+    background-color: hsla(0, 0%, 0%, 0.4);
+    font-size: 30px;
+    color: white;
+}
+#canvas {
+    background-color: var(--canvas-color);
+    touch-action: none;
+}
+.chat_container {
+    position: relative;
+    z-index: 10;
+    height: calc(100vh - 100vw - 40px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+b {
+    color: var(--font-color-white);
+    font-size: 20px;
+}
+.message {
+    color: var(--font-color-white);
+    font-size: 18px;
+    animation: newMessage 200ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes newMessage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+#chat {
+    box-sizing: border-box;
+    background: var(--bg-color);
+    color: var(--font-color-white);
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    border: none;
+    outline: none;
+}
+#controls {
+    display: grid;
+    width: calc(100%);
+    grid-template-columns: 80% 20%;
+    height: 50px;
+    background-color: var(--bg-color);
+}
+#controls input {
+    padding: 8px 5px;
+    border: none;
+    outline: none;
+    border-radius: 0;
+}
+#controls input:first-child {
+    background-color: var(--bg-input-color);
+    font-weight: 700;
+    font-size: 20px;
+    padding: 3px 20px;
+    color: var(--font-color);
+}
+#controls input:last-child {
+    background-color: var(--acent-color);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--font-color);
+}
+.form-login {
+    animation-name: login;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+@keyframes login {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.login {
+    position: fixed;
+    background-color: var(--bg-color);
+    width: 100vw;
+    height: 100vh;
+    z-index: 40;
+}
+.login.diffuse {
+    animation: diffuse 800ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes diffuse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+.login.disabled {
+    display: none;
+}
+#login_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+#login_input input:first-child {
+    width: 300px;
+    height: 40px;
+    border-radius: 2rem;
+    padding: 3px 20px;
+    border: none;
+    outline: none;
+    background-color: var(--bg-input-color);
+    font-weight: 700;
+    font-size: 20px;
+    box-shadow: var(--shadow-input);
+    color: var(--font-color);
+}
+#login_input input:last-child {
+    width: 150px;
+    height: 40px;
+    margin-top: 1em;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    background-color: var(--acent-color);
+    box-shadow: var(--shadow-button);
+    color: var(--font-color);
+    font-weight: 700;
+    font-size: 20px;
+}
+#login_input input:last-child:active {
+    margin-top: 1.2em;
+    box-shadow: var(--shadow-button-active);
+}
+#online {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 20;
+    color: #ad5f52;
+}
+.fullscreen {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    opacity: 0.8;
+    background-color: hsla(0, 0%, 0%, 0.4);
+    font-size: 30px;
+    color: white;
+}
+@media screen and (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+    .fullscreen {
+        display: none;
+    }
+    .chat_container {
+        height: 100%;
+    }
+    #chat {
+        width: calc(100vw - 100vh);
+    }
+}
